@@ -1,6 +1,11 @@
-//
-// Created by tomas on 27/12/2023.
-//
+/*
+ *  Name Student 1: Juan Alfonso Arribas
+ *  Name Student 2: Fernando Azlor Hostaled
+ *  Name Student 3: Tomas Juan Uson
+ *  Project: Programming Project
+ *  Date of Creation: 27 / 12 / 2023
+ *  Objective: Define the headers of the fileManager.c functions.
+ */
 
 #ifndef MAINC_FILEMANAGER_H
 #define MAINC_FILEMANAGER_H
@@ -10,7 +15,7 @@
 
 int checksum(char arrayChar[], int numChar);
 
-void xorCipher(char* arrayData, int numChar, int pwd[]);
+void xorCipher(char* arrayData, int numChar, const char* password);
 
 
 
@@ -20,7 +25,7 @@ void xorCipher(char* arrayData, int numChar, int pwd[]);
 void readUserInfo(char ruta, const int claveCifrado);
 
 // Si el fichero se ha podido crear y escribir correctamente, la funcion devolvera el valor 0, y si no deolvera el valor -1.
-int writeUserInfo(char* path, Accounts account[], const char* pwd);
+int writeUserInfo(char* path, Accounts account[], const char* password, const int numAccounts);
 
 #endif //MAINC_FILEMANAGER_H
 

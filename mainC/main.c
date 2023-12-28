@@ -1,42 +1,55 @@
+/*
+ *  Name Student 1: Juan Alfonso Arribas
+ *  Name Student 2: Fernando Azlor Hostaled
+ *  Name Student 3: Tomas Juan Uson
+ *  Project: Programming Project
+ *  Date of Creation: 27 / 12 / 2023
+ *  Objective: Main function that does the following:
+ *
+ */
+
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
 #include <string.h>
 
-#include "userInfoManager.h"
 #include "fileManager.h"
+#include "userInfoManager.h"
 
-//TIME AND OPENING INTERFACE
-//internet
-void Time()
-{
-    time_t current_time;
-    char* c_time_string;
+/*
+ * Argument:
+ *      No argument
+ * Function:
+ *      date() prints the current time on a string format.
+ * Return:
+ *       0 --> If we were able to print the current date
+ *      -1 --> If we weren't successful obtaining the current time
+ */
+int date() {
+    // time_t variable where we will store the current time
+    time_t currentTime;
+    // Char pointer where we will store the formatted date string
+    char* dateString;
 
-    // Obtain current time
-    current_time = time(NULL);
+    // Obtain the current time
+    currentTime = time(NULL);
 
-    if (current_time == ((time_t)-1))
-    {
-        (void) fprintf(stderr, "Failure to obtain the current time.\n");
-        exit(EXIT_FAILURE);
+    // We check if we were successful obtaining the current time
+    if (currentTime == ((time_t)-1)) {
+        // We print an ERROR message informing that we couldn't obtain the current time
+        fprintf(stderr, "Failure to obtain the current time.\n");
+        return -1;
     }
 
-    // Convert to local time format
-    c_time_string = ctime(&current_time);
-    c_time_string[24] = ' ' ;
+    // Convert currentTime into a string representation
+    dateString = ctime(&currentTime);
+    // Replace '\n' at index 24 with a space (Remove the newline)
+    dateString[24] = ' ' ;
 
-    /*
-    if (c_time_string == NULL)
-    {
-        (void) fprintf(stderr, "Failure to convert the current time.\n");
-        exit(EXIT_FAILURE);
-    }
-    */
-    // Print to stdout. ctime() has already added a terminating newline character
-    (void) printf("%c Date and Time: %s%c", 186, c_time_string, 186);
-
-
+    // Print the date in a string format
+    // 186 --> ║ (Symbol that our computer keyboards can´t write)
+    printf("%c Date and Time: %s%c", 186, dateString, 186);
+    return 0;
 }
 
 void interface()
@@ -58,7 +71,7 @@ void interface()
 
     printf("%c Welcome to heaven's account gestor      %c\n", 186, 186);
     printf("%c creators: @Tomas @JuanAlf @Fernando     %c\n", 186, 186);
-    Time();
+    date();
     printf("\n");
 
     //write style interface
@@ -77,8 +90,8 @@ int main() {
 
     //dinamico **
     char user[10] = {0};
-    int pwd[10] = {0};
-    int pwd2[10] = {0};
+    char pwd[10] = {0};
+    char pwd2[10] = {0};
     int mode = 0;
 
     //Variable that states the existance of a file: (0 = didn't exist; 1 = existed) -->default: exists
@@ -90,7 +103,7 @@ int main() {
     scanf("%s", user);
     fflush(stdin);
 //============================================================================
-    char filePath[20] = ".\\";
+    char filePath[20] = "./";
     char fileFormat[5] = ".txt";
 
     strcat(user, fileFormat);
@@ -109,12 +122,11 @@ int main() {
     {
         fclose(fp);
     }
-
 //============================================================================
 
     // name change(?)
     printf("Password:");
-    scanf("%d", pwd);
+    scanf("%s", pwd);
     printf("\n");
 
     if(fileExists == 0)
@@ -139,11 +151,11 @@ int main() {
             if(!samePwd)
             {
                 printf("Write your new password:");
-                scanf("%d", pwd);
+                scanf("%s", pwd);
             }
 
             printf("Write your password again:");
-            scanf("%d", pwd2);
+            scanf("%s", pwd2);
             samePwd = 1;
 
             for(int i = 0; i < 10; i++)
@@ -200,8 +212,7 @@ int main() {
                 break;
             case 4:
 
-
-                //fclose(fp);
+                writeUserInfo(filePath, account, pwd, numAccounts);
 
                 break;
             default:

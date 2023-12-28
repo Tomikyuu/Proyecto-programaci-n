@@ -1,12 +1,18 @@
-//
-// Created by tomas on 27/12/2023.
-//
+/*
+ *  Name Student 1: Juan Alfonso Arribas
+ *  Name Student 2: Fernando Azlor Hostaled
+ *  Name Student 3: Tomas Juan Uson
+ *  Project: Programming Project
+ *  Date of Creation: 27 / 12 / 2023
+ *  Objective: Define the headers of the userInfoManager.c functions.
+ */
 
 #ifndef MAINC_USERINFOMANAGER_H
 #define MAINC_USERINFOMANAGER_H
 
-#include <string.h>
 #include <stdio.h>
+#include <string.h>
+#include "fileManager.h"
 
 typedef struct
 {
@@ -15,6 +21,8 @@ typedef struct
 
     int userNamelenght;
     int passwordlenght;
+
+    int checksum;
 
 }Accounts;
 
