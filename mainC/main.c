@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "userInfoManager.h"
+#include "fileManager.h"
+
 //TIME AND OPENING INTERFACE
 //internet
 void Time()
@@ -70,10 +73,12 @@ int main() {
 
     interface();
 
+    MasterAccount master;
+
     //dinamico **
     char user[10] = {0};
-    int pwd = 0;
-    int pwd2 = 0;
+    int pwd[10] = {0};
+    int pwd2[10] = {0};
     int mode = 0;
 
     //Variable that states the existance of a file: (0 = didn't exist; 1 = existed) -->default: exists
@@ -97,16 +102,19 @@ int main() {
     {
         fp = fopen(filePath, "w"); //se crea el fichero si no existe
         fclose(fp);
-        fp = fopen(filePath, "r"); //se abre el fichero con permiso de lectura
 
         fileExists = 0;
+    }
+    else
+    {
+        fclose(fp);
     }
 
 //============================================================================
 
     // name change(?)
     printf("Password:");
-    scanf("%d", &pwd);
+    scanf("%d", pwd);
     printf("\n");
 
     if(fileExists == 0)
@@ -131,30 +139,42 @@ int main() {
             if(!samePwd)
             {
                 printf("Write your new password:");
-                scanf("%d", &pwd);
+                scanf("%d", pwd);
             }
 
             printf("Write your password again:");
-            scanf("%d", &pwd2);
+            scanf("%d", pwd2);
             samePwd = 1;
 
-            if(pwd != pwd2)
+            for(int i = 0; i < 10; i++)
             {
-                samePwd = 0;
-                printf("Passwords are not equal\n\n");
+                if(pwd[i] != pwd2[i])
+                {
+                    samePwd = 0;
+                    fprintf(stderr, "Passwords are not equal\n\n");
+                }
             }
         }while (!samePwd);
 
     }
 
+    int numAccounts = 0;
+    Accounts account[numAccounts];
+
     do
     {
-        printf("Select what you want to do:\n");
+        //strlen(user) - 4 is used to not print the ".txt" at the end of the name
+        printf("\nWelcome ");
+        for(int i =0; i < strlen(user) - 4; i++)
+        {
+            printf("%c", user[i]);
+        }
+        printf("\nSelect what you want to do:\n");
 
         printf("\t 1) See saved accounts \n"
-               "\t 2) Add a new account \n"
-               "\t 3) Delete account \n"
-               "\t 4) Save and quit \n");
+                      "\t 2) Add a new account \n"
+                      "\t 3) Delete account \n"
+                      "\t 4) Save and quit \n");
 
         scanf("%d", &mode);
 
@@ -168,7 +188,9 @@ int main() {
                 break;
             case 2:
 
-
+                //podriamos poner numAccounts++ despues de la funcion
+                numAccounts++;
+                fillUserInfo(account[numAccounts - 1]);
 
                 break;
             case 3:
@@ -178,12 +200,13 @@ int main() {
                 break;
             case 4:
 
-                fclose(fp);
+
+                //fclose(fp);
 
                 break;
             default:
 
-                printf("that is not an option, try again \n ");
+                fprintf(stderr, "That is not an option, try again \n ");
 
                 break;
         }
