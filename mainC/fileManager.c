@@ -9,19 +9,20 @@
 
 #include "fileManager.h"
 
-int checksum(char arrayChar[], int numChar)
-{
+int checksum(char arrayChar[], int numChar) {
+    // Declare variable result where we will store the value of the checksum and initialise it to 0 so
+    // when we add to it, it will not give us any problem.
     int result = 0;
-    for (int i = 0; i < numChar; i++)
-    {
+    // For loop that goes through the array of characters arrayChar[] one character at the time
+    for (int i = 0; i < numChar; i++) {
+        // Add the ASCII value of every character of the array to result
         result = result + (int)arrayChar[i];
     }
-
+    // Return result (checksum of arrayChar)
     return result;
 }
 
-void xorCipher(char* arrayData, int numChar, const char* password)
-{
+void xorCipher(char arrayData[], int numChar, const char password[]) {
     int passwordLenght = (int)strlen(arrayData);
     for (int i = 0; i < numChar; i++)
     {
@@ -29,7 +30,7 @@ void xorCipher(char* arrayData, int numChar, const char* password)
     }
 }
 
-int writeUserInfo(char* path, Accounts account[], const char* password, const int numAccounts)
+int writeUserInfo(char* path, Accounts account[], const char password[], const int numAccounts)
 {
     // Cipher usernames and passwords in
     for (int i = 0; i < numAccounts; i++) {

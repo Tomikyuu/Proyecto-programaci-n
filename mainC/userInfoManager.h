@@ -11,6 +11,7 @@
 #define MAINC_USERINFOMANAGER_H
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 
@@ -26,22 +27,45 @@ typedef struct
 
 }Accounts;
 
-typedef struct
-{
-    //puede que no hagan falta user y pwd
-    char* userName;
-    char* password;
+/*
+ * Argument:
+ *
+ * Function:
+ *
+ * Return:
+ *      Nothing is a void. (But arrayChar goes through reference and "stores" the ciphered text)
+ */
+void createUserInfo(int numAccounts, Accounts** account, int firstTime);
 
-    int numAccounts;
-    int checkSum;
-}MasterAccount;
+/*
+ * Argument:
+ *      account* --> pointer struct that contains the credentials of an account
+ * Function:
+ *      fillUserInfo() will store the struct account with the username, the password, the length in characters
+ *      of the username, the length in characters of the password and the checksum of the account.
+ * Return:
+ *      Nothing is a void. (But arrayChar goes through reference and "stores" the ciphered text)
+ */
+void fillUserInfo(Accounts* account);
 
-void createUserInfo(int numAccounts);
-
-void fillUserInfo(Accounts account);
-
+/*
+ * Argument:
+ *
+ * Function:
+ *
+ * Return:
+ *      Nothing is a void. (But arrayChar goes through reference and "stores" the ciphered text)
+ */
 void deleteUser(int numAccounts, int index);
 
+/*
+ * Argument:
+ *
+ * Function:
+ *
+ * Return:
+ *      Nothing is a void. (But arrayChar goes through reference and "stores" the ciphered text)
+ */
 void freeAllUserInfo(int numAccount);
 
 #endif //MAINC_USERINFOMANAGER_H

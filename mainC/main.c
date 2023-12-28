@@ -8,13 +8,20 @@
  *
  */
 
+// Include libraries
 #include <stdio.h>
 #include <time.h>
-#include <stdlib.h>
 #include <string.h>
 
+// Include .h files
 #include "fileManager.h"
 #include "userInfoManager.h"
+
+// Define the different modes of the program for better understanding
+#define SEE_ACCOUNTS 1
+#define CREATE_ACCOUNT 2
+#define DELETE_ACCOUNT 3
+#define SAFE_AND_EXIT 4
 
 /*
  * Argument:
@@ -52,34 +59,54 @@ int date() {
     return 0;
 }
 
+/*
+ * Argument:
+ *      No argument
+ * Function:
+ *      printBars() prints 43 == to create a box
+ * Return:
+ *      It's a void, so it doesn't print anything
+ */
+void printBars() {
+    // Prints == 43 times to create a box
+    // 205 --> ASCII Code for a Symbol our computer keyboards can't write
+    for(int i = 0; i < 43; i++)
+    {
+        printf("%c", 205);
+    }
+    printf("\n");
+}
+
+/*
+ * Argument:
+ *      No argument
+ * Function:
+ *      interface() prints an interface for the program
+ * Return:
+ *      It's a void, so it doesn't print anything
+ */
 void interface()
 {
-    //ASCII ART
+    //ASCII ART saying WELCOME
     printf(" __      __        __\n");
     printf("/  \\    /  \\ ____ |  |   ____  ____   _____   ____\n");
     printf("\\   \\/\\/   // __ \\|  | _/ ___\\/    \\ /     \\ / __ \\\n");
     printf(" \\        /\\  ___/|  |_\\  \\__(  <_> )  y y  \\  ___/\n");
     printf("  \\__/\\__/  \\____ |____/\\___/ \\____/|__|_|__/\\____\n");
 
-    //write style interface
-    for(int i = 0; i < 43; i++)
-    {
-        printf("%c", 205);
-    }
-    printf("\n");
+    // Prints box top bars
+    printBars();
 
-
-    printf("%c Welcome to heaven's account gestor      %c\n", 186, 186);
-    printf("%c creators: @Tomas @JuanAlf @Fernando     %c\n", 186, 186);
+    // Welcome the user, Introduce Developers and Print Date
+    // 186 --> ║ (Symbol that our computer keyboards can´t write)
+    printf("%c Welcome to heaven's account Manager     %c\n", 186, 186);
+    printf("%c Creators: @Tomas @JuanAlf @Fernando     %c\n", 186, 186);
     date();
     printf("\n");
 
-    //write style interface
-    for(int j = 0; j < 43; j++)
-    {
-        printf("%c", 205);
-    }
-    printf("\n\n");
+    // Prints box down bars
+    printBars();
+    printf("\n");
 }
 
 int main() {
@@ -87,8 +114,6 @@ int main() {
     setbuf(stdout, NULL);
 
     interface();
-
-    MasterAccount master;
 
     //dinamico **
     char user[10] = {0};
@@ -163,7 +188,7 @@ int main() {
             printf("%s -> %s\n", pwd, pwd2);
 
 
-            if(strcmp(pwd, pwd2))
+            if(strcmp(pwd, pwd2) != 0)
             {
                 samePwd = 0;
                 printf("Passwords are not equal\n\n");
@@ -174,19 +199,26 @@ int main() {
 
     }
 
+    int firstTime = 0;
     int numAccounts = 0;
-    Accounts account[numAccounts];
+
+    Accounts* account;
+    Accounts  arrayAccount;
+
+    account = &arrayAccount;
+
+    //strlen(user) - 4 is used to not print the ".txt" at the end of the name
+    printf("\nWelcome ");
+    for(int i =0; i < strlen(user) - 4; i++)
+    {
+        printf("%c", user[i]);
+    }
 
     do
     {
-        //strlen(user) - 4 is used to not print the ".txt" at the end of the name
-        printf("\nWelcome ");
-        for(int i =0; i < strlen(user) - 4; i++)
-        {
-            printf("%c", user[i]);
-        }
-        printf("\nSelect what you want to do:\n");
 
+        fflush(stdin);
+        printf("\nSelect what you want to do:\n");
         printf("\t 1) See saved accounts \n"
                       "\t 2) Add a new account \n"
                       "\t 3) Delete account \n"
@@ -195,9 +227,8 @@ int main() {
         scanf("%d", &mode);
 
         //#define **
-        switch (mode)
-        {
-            case 1:
+        switch (mode) {
+            case SEE_ACCOUNTS:
 
                 if(numAccounts == 0)
                 {
@@ -207,26 +238,26 @@ int main() {
                 {
                     for(int i = 0; i < numAccounts; i++)
                     {
-                        printf("\nAccount number %d:\n", i+1);
+                        printf("\nAccount number %d:\n", i + 1);
                         printf("\tUsername: %s\n", account[i].userName);
                         printf("\tPassword: %s\n", account[i].password);
                     }
                 }
 
                 break;
-            case 2:
+            case CREATE_ACCOUNT:
 
                 //podriamos poner numAccounts++ despues de la funcion
+                fillUserInfo(account);
                 numAccounts++;
-                fillUserInfo(account[numAccounts - 1]);
 
                 break;
-            case 3:
+            case DELETE_ACCOUNT:
 
 
 
                 break;
-            case 4:
+            case SAFE_AND_EXIT:
 
                 writeUserInfo(filePath, account, pwd, numAccounts);
 

@@ -11,30 +11,50 @@
 #include "fileManager.h"
 #include "userInfoManager.h"
 
-
-void createUserInfo(int numAccounts)
-{
-
+void createUserInfo(int numAccounts, Accounts** account, int firstTime) {
+    if (firstTime) {
+        *account = (Accounts*)malloc(numAccounts * sizeof(Accounts));
+    }
+    else {
+        *account = (Accounts*)realloc(*account, numAccounts * sizeof(Accounts));
+    }
 }
 
 //===================================================================================
 
-void fillUserInfo(Accounts account)
-{
-    printf("Enter the name of your new account: ");
-    scanf("%s", account.userName);
+void fillUserInfo(Accounts* account) {
+    char username[5] = {0};
+    char password[5] = {0};
 
-    printf("Enter the password of your new account: ");
-    scanf("%s", account.password);
+    printf("Enter the name of your new account:");
+    scanf("%s", username);
 
-    account.userNamelenght = (int)strlen(account.userName);
-    account.passwordlenght = (int)strlen(account.password);
+    printf("Enter the password of your new account:");
+    scanf("%s", password);
+
+    account -> userNamelenght = (int)strlen(username);
+    account -> passwordlenght = (int)strlen(password);
+
+    account -> userNamelenght += 1;
+    account -> passwordlenght += 1;
+
+    account -> userName = malloc(account -> userNamelenght);
+    if (account -> userName == NULL) {
+        fprintf(stderr, "There is not enough memory space");
+    }
+    account -> password = malloc(account -> passwordlenght);
+    if (account -> password == NULL) {
+        fprintf(stderr, "There is not enough memory space");
+    }
+
+    account -> userName = username;
+    account -> password = password;
+
+    printf("%s %s", account -> userName, account -> password);
 
     // We declare checksum 0 so that it can add correctly
-    account.checksum = 0;
-    account.checksum = checksum(account.userName, account.userNamelenght);
-    account.checksum += checksum(account.password, account.passwordlenght);
-
-    //index may be needed
+    account -> checksum = 0;
+    account -> checksum = checksum(account -> userName, account -> userNamelenght);
+    account -> checksum += checksum(account -> password, account -> passwordlenght);
 }
 
