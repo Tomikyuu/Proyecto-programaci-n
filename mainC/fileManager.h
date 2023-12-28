@@ -25,7 +25,7 @@ void xorCipher(char* arrayData, int numChar, const char* password);
 void readUserInfo(char ruta, const int claveCifrado);
 
 // Si el fichero se ha podido crear y escribir correctamente, la funcion devolvera el valor 0, y si no deolvera el valor -1.
-int writeUserInfo(char* path, Accounts account[], const char* password, const int numAccounts);
+int writeUserInfo(char* path, Accounts account[], const char* password, int numAccounts);
 
 #endif //MAINC_FILEMANAGER_H
 

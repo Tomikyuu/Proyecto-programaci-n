@@ -8,8 +8,9 @@
  *             to be defined, to store the information of each account.
  */
 
-
+#include "fileManager.h"
 #include "userInfoManager.h"
+
 
 void createUserInfo(int numAccounts)
 {

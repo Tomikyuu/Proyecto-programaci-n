@@ -37,7 +37,7 @@ int date() {
     // We check if we were successful obtaining the current time
     if (currentTime == ((time_t)-1)) {
         // We print an ERROR message informing that we couldn't obtain the current time
-        fprintf(stderr, "Failure to obtain the current time.\n");
+        printf("Failure to obtain the current time.\n");
         return -1;
     }
 
@@ -83,6 +83,8 @@ void interface()
 }
 
 int main() {
+
+    setbuf(stdout, NULL);
 
     interface();
 
@@ -158,14 +160,16 @@ int main() {
             scanf("%s", pwd2);
             samePwd = 1;
 
-            for(int i = 0; i < 10; i++)
+            printf("%s -> %s\n", pwd, pwd2);
+
+
+            if(strcmp(pwd, pwd2))
             {
-                if(pwd[i] != pwd2[i])
-                {
-                    samePwd = 0;
-                    fprintf(stderr, "Passwords are not equal\n\n");
-                }
+                samePwd = 0;
+                printf("Passwords are not equal\n\n");
+
             }
+
         }while (!samePwd);
 
     }
@@ -195,7 +199,19 @@ int main() {
         {
             case 1:
 
-
+                if(numAccounts == 0)
+                {
+                    printf("You have no accounts, create a new one");
+                }
+                else
+                {
+                    for(int i = 0; i < numAccounts; i++)
+                    {
+                        printf("\nAccount number %d:\n", i+1);
+                        printf("\tUsername: %s\n", account[i].userName);
+                        printf("\tPassword: %s\n", account[i].password);
+                    }
+                }
 
                 break;
             case 2:
