@@ -45,7 +45,7 @@ void xorCipher(char arrayData[], int numChar, const char password[]);
  * Return:
  *      Nothing is a void. (But arrayChar goes through reference and "stores" the ciphered text)
  */
-int readUserInfo(char* ruta, Accounts account[], char password[]);
+int readUserInfo(char* path, Accounts* account, const char password[]);
 
 /*
  * Argument:

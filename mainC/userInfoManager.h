@@ -29,9 +29,13 @@ typedef struct
 
 /*
  * Argument:
- *
+ *      numAccounts --> Nº of accounts the user has
+ *      account**   --> Pointer that points to the pointer that points to the struct (To assign memory space)
+ *      firstTime   --> Boolean Variable:
+ *                          1 --> First time assigning memory so malloc
+ *                          0 --> Already assigned memory so we realloc
  * Function:
- *
+ *      It assigns
  * Return:
  *      Nothing is a void. (But arrayChar goes through reference and "stores" the ciphered text)
  */
@@ -46,7 +50,7 @@ void createUserInfo(int numAccounts, Accounts** account, int firstTime);
  * Return:
  *      Nothing is a void. (But arrayChar goes through reference and "stores" the ciphered text)
  */
-void fillUserInfo(Accounts* account);
+int fillUserInfo(Accounts* account);
 
 /*
  * Argument:
@@ -64,7 +68,7 @@ void deleteUser(int numAccounts, int index);
  * Function:
  *
  * Return:
- *      Nothing is a void. (But arrayChar goes through reference and "stores" the ciphered text)
+ *      Nothing is a void.
  */
 void freeAllUserInfo(int numAccount);
 

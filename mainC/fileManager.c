@@ -30,7 +30,7 @@ void xorCipher(char arrayData[], int numChar, const char password[]) {
     }
 }
 
-int readUserInfo(char* path, Accounts account[], char password[]) {
+int readUserInfo(char* path, Accounts* account, const char password[]) {
     int checksumAux;
     int numAccounts = 0;
 
@@ -40,8 +40,7 @@ int readUserInfo(char* path, Accounts account[], char password[]) {
     fp = fopen(path, "rb");
 
     // If the file could not be open
-    if(fp == NULL)
-    {
+    if(fp == NULL) {
         fprintf(stderr, "The file could not be open");
         return -1;
     }
@@ -57,6 +56,11 @@ int readUserInfo(char* path, Accounts account[], char password[]) {
         // Store the data of the file in the variables of the struct
         fscanf(fp, "%d", &account[i].userNamelenght);
         fscanf(fp, "%d", &account[i].userNamelenght);
+
+        // Assign Memory Space to the Pointers of the username and password
+        account -> userName = malloc(account -> userNamelenght);
+        account -> password = malloc(account -> passwordlenght);
+
         fscanf(fp, "%s", account[i].userName);
         fscanf(fp, "%s", account[i].password);
         fscanf(fp, "%d", &account[i].checksum);
@@ -73,8 +77,12 @@ int readUserInfo(char* path, Accounts account[], char password[]) {
         if (account[i].checksum != checksumAux) {
             // Close file
             fclose(fp);
-            // Free memory space of account
+            // Free memory space of account, password and username
             free(account);
+            for (int j = 0; j <= i; j++) {
+                free(account[i].userName);
+                free(account[i].password);
+            }
             // Return -1
             return -2;
         }
@@ -98,8 +106,7 @@ int writeUserInfo(char* path, Accounts account[], const char password[], const i
     FILE * fp;
     fp = fopen(path, "wb");
 
-    if(fp == NULL)
-    {
+    if(fp == NULL) {
         printf("The file could not be open");
         return -1;
     }
