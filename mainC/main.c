@@ -115,28 +115,41 @@ int main() {
 
     interface();
 
-    //dinamico **
+    // Declare Variables
     char user[10] = {0};
     char pwd[10] = {0};
     char pwd2[10] = {0};
     int mode = 0;
 
-    //Variable that states the existance of a file: (0 = didn't exist; 1 = existed) -->default: exists
+    //Variable that states the existence of a file: (0 = didn't exist; 1 = existed) -->default: exists
     int fileExists = 1;
-
-    FILE * fp;
 
     printf("Username:");
     scanf("%s", user);
     fflush(stdin);
+
+    // name change(?)
+    printf("Password:");
+    scanf("%s", pwd);
+    printf("\n");
+
 //============================================================================
+
+    int firstTime = 0;
+    int numAccounts = 0;
+
+    Accounts* account;
+
     char filePath[20] = "./";
     char fileFormat[5] = ".txt";
 
     strcat(user, fileFormat);
     strcat(filePath, user);
 
+    FILE * fp;
     fp = fopen(filePath, "r");
+
+    createUserInfo(1, &account, 1);
 
     if (fp == NULL) //protección para el caso que no exista el fichero
     {
@@ -145,24 +158,36 @@ int main() {
 
         fileExists = 0;
     }
-    else
-    {
+    else {
         fclose(fp);
+        // Variable counter that stores the amount of chances the user has to write the correct password
+        int counter = 3;
+        do {
+            numAccounts = readUserInfo(filePath, account, pwd);
+            counter--;
+            // If the file could not be open:
+            if (numAccounts == -1) {
+                printf("File could not be open");
+                return 0;
+            }
+            // If the password is incorrect (after checking with the checksums)
+            else if(numAccounts == -2) {
+                printf("Wrong Password, Try Again (You have %d Tries left):", counter);
+                scanf("%s", pwd);
+                if (counter == 0) {
+                    printf("\nNo More Chances Left .... ENTRY BLOCKED .... Closing the Program\n");
+                    // Return 0 --> No more chances left, Invalid Password
+                    return 0;
+                }
+            }
+        // While the passwords are incorrect --> the while loop will not end
+        } while(numAccounts == -2);
     }
 //============================================================================
 
-    // name change(?)
-    printf("Password:");
-    scanf("%s", pwd);
-    printf("\n");
-
     if(fileExists == 0)
     {
-        for(int j = 0; j < 43; j++)
-        {
-            printf("%c", 205);
-        }
-
+        printBars();
 
         printf("\nWelcome, I see that your account is a new one, so let me explain how the program works:\n"
                "You will be asked to write accounts you want to store and its password. Then these data\n"
@@ -199,14 +224,6 @@ int main() {
 
     }
 
-    int firstTime = 0;
-    int numAccounts = 0;
-
-    Accounts* account;
-    Accounts  arrayAccount;
-
-    account = &arrayAccount;
-
     //strlen(user) - 4 is used to not print the ".txt" at the end of the name
     printf("\nWelcome ");
     for(int i =0; i < strlen(user) - 4; i++)
@@ -214,10 +231,8 @@ int main() {
         printf("%c", user[i]);
     }
 
-    do
-    {
+    do {
 
-        fflush(stdin);
         printf("\nSelect what you want to do:\n");
         printf("\t 1) See saved accounts \n"
                       "\t 2) Add a new account \n"
@@ -246,11 +261,16 @@ int main() {
 
                 break;
             case CREATE_ACCOUNT:
-
-                //podriamos poner numAccounts++ despues de la funcion
-                fillUserInfo(account);
+                if (numAccounts == 0) {
+                    // malloc
+                    createUserInfo(numAccounts + 1, &account, 1);
+                }
+                else {
+                    // realloc
+                    createUserInfo(numAccounts + 1, &account, 0);
+                }
+                fillUserInfo(&account[numAccounts]);
                 numAccounts++;
-
                 break;
             case DELETE_ACCOUNT:
 

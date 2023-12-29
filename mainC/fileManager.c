@@ -30,6 +30,63 @@ void xorCipher(char arrayData[], int numChar, const char password[]) {
     }
 }
 
+int readUserInfo(char* path, Accounts account[], char password[]) {
+    int checksumAux;
+    int numAccounts = 0;
+
+    // Open file
+    FILE * fp;
+    // Read a binary file
+    fp = fopen(path, "rb");
+
+    // If the file could not be open
+    if(fp == NULL)
+    {
+        fprintf(stderr, "The file could not be open");
+        return -1;
+    }
+
+    // Read number of accounts and store it in numAccounts
+    fscanf(fp, "%d", &numAccounts);
+
+    // Assign Memory Space to the Struct
+    createUserInfo(numAccounts, &account, 0);
+
+    // For loop that goes through all the accounts of the user
+    for (int i = 0; i < numAccounts; i++) {
+        // Store the data of the file in the variables of the struct
+        fscanf(fp, "%d", &account[i].userNamelenght);
+        fscanf(fp, "%d", &account[i].userNamelenght);
+        fscanf(fp, "%s", account[i].userName);
+        fscanf(fp, "%s", account[i].password);
+        fscanf(fp, "%d", &account[i].checksum);
+
+        // Decipher username and password
+        xorCipher(account[i].userName, account[i].userNamelenght, password);
+        xorCipher(account[i].password, account[i].passwordlenght, password);
+
+        // Calculate checksum of username and password
+        checksumAux  = checksum(account[i].userName, account[i].userNamelenght);
+        checksumAux += checksum(account[i].password, account[i].passwordlenght);
+
+        // If the checksums are different
+        if (account[i].checksum != checksumAux) {
+            // Close file
+            fclose(fp);
+            // Free memory space of account
+            free(account);
+            // Return -1
+            return -2;
+        }
+    }
+
+    // Close file
+    fclose(fp);
+    // Return numAccounts
+    return numAccounts;
+}
+
+
 int writeUserInfo(char* path, Accounts account[], const char password[], const int numAccounts)
 {
     // Cipher usernames and passwords in
@@ -43,7 +100,7 @@ int writeUserInfo(char* path, Accounts account[], const char password[], const i
 
     if(fp == NULL)
     {
-        fprintf(stderr, "The file could not be open");
+        printf("The file could not be open");
         return -1;
     }
 

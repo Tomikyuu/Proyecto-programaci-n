@@ -23,6 +23,7 @@ void createUserInfo(int numAccounts, Accounts** account, int firstTime) {
 //===================================================================================
 
 void fillUserInfo(Accounts* account) {
+
     char username[5] = {0};
     char password[5] = {0};
 
@@ -35,25 +36,28 @@ void fillUserInfo(Accounts* account) {
     account -> userNamelenght = (int)strlen(username);
     account -> passwordlenght = (int)strlen(password);
 
-    account -> userNamelenght += 1;
-    account -> passwordlenght += 1;
+    //account -> userNamelenght += 1;
+    //account -> passwordlenght += 1;
 
-    account -> userName = malloc(account -> userNamelenght);
+    account -> userName = malloc(account -> userNamelenght + 1);
     if (account -> userName == NULL) {
         fprintf(stderr, "There is not enough memory space");
     }
-    account -> password = malloc(account -> passwordlenght);
+    account -> password = malloc(account -> passwordlenght + 1);
     if (account -> password == NULL) {
         fprintf(stderr, "There is not enough memory space");
     }
 
-    account -> userName = username;
-    account -> password = password;
+    strcpy(account -> userName, username);
+    strcpy(account -> password, password);
+
+    // DIFFICULTY
+    //account -> userName = username;
+    //account -> password = password;
 
     printf("%s %s", account -> userName, account -> password);
 
     // We declare checksum 0 so that it can add correctly
-    account -> checksum = 0;
     account -> checksum = checksum(account -> userName, account -> userNamelenght);
     account -> checksum += checksum(account -> password, account -> passwordlenght);
 }
