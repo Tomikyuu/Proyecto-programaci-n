@@ -22,7 +22,7 @@
  * Return:
  *      result --> Returns the checksum that correspond to the arrayChar[]
  */
-int checksum(char arrayChar[], int numChar);
+int checksum(const char arrayChar[], int numChar);
 
 /*
  * Argument:

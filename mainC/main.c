@@ -85,8 +85,7 @@ void printBars() {
  * Return:
  *      It's a void, so it doesn't print anything
  */
-void interface()
-{
+void interface() {
     //ASCII ART saying WELCOME
     printf(" __      __        __\n");
     printf("/  \\    /  \\ ____ |  |   ____  ____   _____   ____\n");
@@ -135,7 +134,7 @@ int main() {
 
 //============================================================================
 
-    int firstTime = 0;
+    int firstTime = 1;
     int numAccounts = 0;
 
     Accounts* account;
@@ -149,8 +148,6 @@ int main() {
     FILE * fp;
     fp = fopen(filePath, "r");
 
-    createUserInfo(1, &account, 1);
-
     if (fp == NULL) //protección para el caso que no exista el fichero
     {
         fp = fopen(filePath, "w"); //se crea el fichero si no existe
@@ -163,6 +160,7 @@ int main() {
         // Variable counter that stores the amount of chances the user has to write the correct password
         int counter = 3;
         do {
+            createUserInfo(1, &account, 1);
             numAccounts = readUserInfo(filePath, account, pwd);
             counter--;
             // If the file could not be open:
@@ -172,9 +170,12 @@ int main() {
             }
             // If the password is incorrect (after checking with the checksums)
             else if(numAccounts == -2) {
+
                 printf("Wrong Password, Try Again (You have %d Tries left):", counter);
                 scanf("%s", pwd);
+
                 if (counter == 0) {
+
                     printf("\nNo More Chances Left .... ENTRY BLOCKED .... Closing the Program\n");
                     // Return 0 --> No more chances left, Invalid Password
                     return 0;
