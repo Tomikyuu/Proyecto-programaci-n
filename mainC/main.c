@@ -157,7 +157,7 @@ int main() {
     // Array of character that stores the path to the file
     char filePath[20] = "./";
     // Array of Characters that stores the file format
-    char fileFormat[4] = ".txt";
+    char fileFormat[5] = ".txt";
 
     // Link together the path, username and file format, to create the complete path to the file
     // Concatenate the username and the file format
@@ -268,6 +268,7 @@ int main() {
                       "\t 4) Save and quit \n");
 
         scanf("%d", &mode);
+        int index;
 
         //#define **
         switch (mode) {
@@ -302,10 +303,23 @@ int main() {
                 break;
             case DELETE_ACCOUNT:
 
+                printf("Which account do you want to delete?:");
+                scanf("%d", &index);
 
+                if(index > numAccounts || index < 1)
+                {
+                    printf("There is no account in this slot\n");
+                }
+                else
+                {
+                    deleteUser(numAccounts, index, &account);
+                    numAccounts--;
+                    createUserInfo(numAccounts, &account, 0);
+                }
 
                 break;
             case SAFE_AND_EXIT:
+
 
                 writeUserInfo(filePath, account, pwd, numAccounts);
 

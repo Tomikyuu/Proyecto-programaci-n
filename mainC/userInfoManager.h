@@ -72,7 +72,7 @@ int fillUserInfo(Accounts* account);
  * Return:
  *      Nothing is a void. (But arrayChar goes through reference and "stores" the ciphered text)
  */
-void deleteUser(int numAccounts, int index);
+void deleteUser(int numAccounts, int index, Accounts** accounts);
 
 /*
  * Argument:

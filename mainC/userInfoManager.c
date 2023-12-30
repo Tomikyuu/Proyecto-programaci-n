@@ -66,3 +66,23 @@ int fillUserInfo(Accounts* account) {
     return 0;
 }
 
+void deleteUser(int numAccounts, int index, Accounts** accounts)
+{
+
+    for(int i = index - 1; i < numAccounts; i++)
+    {
+
+        accounts[i]->userNamelenght = accounts[i + 1]->userNamelenght;
+        accounts[i]->passwordlenght = accounts[i + 1]->passwordlenght;
+
+        (*accounts)[i].userName = realloc((*accounts)[i].userName, accounts[i]->userNamelenght+1);
+        (*accounts)[i].password = realloc((*accounts)[i].password, accounts[i]->passwordlenght+1);
+
+        accounts[i]->userName = accounts[i + 1]->userName;
+        accounts[i]->password = accounts[i + 1]->password;
+
+    }
+
+    printf("Deleted succesfuly\n");
+
+}
