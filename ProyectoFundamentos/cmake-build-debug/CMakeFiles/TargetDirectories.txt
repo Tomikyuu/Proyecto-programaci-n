@@ -1,0 +1,3 @@
+/Users/informatica/Desktop/Fundamentos de Programación/Proyecyo/ProyectoFundamentos/cmake-build-debug/CMakeFiles/ProyectoFundamentos.dir
+/Users/informatica/Desktop/Fundamentos de Programación/Proyecyo/ProyectoFundamentos/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/informatica/Desktop/Fundamentos de Programación/Proyecyo/ProyectoFundamentos/cmake-build-debug/CMakeFiles/rebuild_cache.dir
