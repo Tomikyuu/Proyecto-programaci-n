@@ -29,11 +29,11 @@ void xorCipher(char arrayData[], int numChar, const char password[]) {
     // For loop that repeats as many times as characters are in arrayData[]
     for (int i = 0; i < numChar; i++) {
         // Algorithm that encrypts arrayData by the bit by bit XOR Cipher
-        arrayData[i] = arrayData[i] ^ password[i % passwordLenght];
+        arrayData[i] = (char)(arrayData[i] ^ password[i % passwordLenght]);
     }
 }
 
-int readUserInfo(char* path, Accounts account[], const char password[]) {
+int readUserInfo(char* path, Accounts** account, const char password[]) {
     // Auxiliary Variable to store the checksum of the account and compare it after
     int checksumAux;
     // Variable to store the number of accounts the user created
@@ -151,14 +151,21 @@ int writeUserInfo(char* path, Accounts account[], const char password[], const i
     for (int i = 0; i < numAccounts; i++) {
         // Prints in file the n� character in the username
         fprintf(fp, "%d ", account[i].userNamelenght);
+        fflush(stdin);
         // Prints in file the n� character in the password
         fprintf(fp, "%d ", account[i].passwordlenght);
+        fflush(stdin);
         // Prints in file the ciphered username
         fprintf(fp, "%s ", account[i].userName);
+        //fwrite(account[i].userName, sizeof(char), account[i].userNamelenght, fp);
+        fflush(stdin);
         // Prints in file the ciphered password
         fprintf(fp, "%s ", account[i].password);
+        //fwrite(account[i].password, sizeof(char), account[i].passwordlenght, fp);
+        fflush(stdin);
         // Prints in file the checksum
         fprintf(fp, "%d\n", account[i].checksum);
+        fflush(stdin);
     }
 
     // Close file

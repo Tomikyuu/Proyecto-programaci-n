@@ -168,11 +168,11 @@ int main() {
     // Create pointer to file
     FILE * fp;
     // Try to open the file, so we can know if it exists
-    fp = fopen(filePath, "r");
+    fp = fopen(filePath, "rb");
     // If the file does not exist, or we cannot access to it
     if (fp == NULL) {
         // We create the file (By opening the file in writing mode)
-        fp = fopen(filePath, "w");
+        fp = fopen(filePath, "wb");
         // Close the file we just created
         fclose(fp);
         // The file didn't exist so 0 (It means it's the first time the user uses the program)
