@@ -5,15 +5,17 @@
  *  Project: Programming Project
  *  Date of Creation: 27 / 12 / 2023
  *  Objective: Library that manages the dynamic memory allocation of the data structures that have
- *             to be defined, to store the information of each account.
+ *             to be defined and to store the information of each account in the structs.
  */
 
 #include "fileManager.h"
 #include "userInfoManager.h"
 
+// Probablemente tenemos que volverlo int por si los datos no se han asignado correctamente
 void createUserInfo(int numAccounts, Accounts** account, int firstTime) {
     if (firstTime) {
         *account = (Accounts*)malloc(numAccounts * sizeof(Accounts));
+
     }
     else {
         *account = (Accounts*)realloc(*account, numAccounts * sizeof(Accounts));
@@ -56,11 +58,11 @@ int fillUserInfo(Accounts* account) {
 
     printf("%s %s", account -> userName, account -> password);
 
-    // We declare checksum 0 so that it can add correctly
+
     account -> checksum = checksum(account -> userName, account -> userNamelenght);
     account -> checksum += checksum(account -> password, account -> passwordlenght);
 
-    // Return 0 if everything went well
+    // Return 0 if Everything Went Alright
     return 0;
 }
 

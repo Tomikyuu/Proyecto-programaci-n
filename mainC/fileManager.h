@@ -39,24 +39,42 @@ void xorCipher(char arrayData[], int numChar, const char password[]);
 
 /*
  * Argument:
- *
+ *      path*      --> Data path where the file is
+ *      account**  --> Pointer to array(pointer) of structs where we need to store the data
+ *      password[] --> Array of characters that form the password to decipher the data
  * Function:
- *
+ *      The function reads the information of the file and decipher it's with the password[].
+ *      Then, it will store the information in the structs and compare the checksums to
+ *      check if the password is the correct one.
+ *      The file will follow this structure:
+ *      numAccounts (Exm: 3)
+ *      NºChar username0   NºChar password0   username0   password0   checksum0
+ *      NºChar username1   NºChar password1   username1   password1   checksum1
+ *      NºChar username2   NºChar password2   username2   password2   checksum2
  * Return:
- *      Nothing is a void. (But arrayChar goes through reference and "stores" the ciphered text)
+ *       0 --> If everything went as it should
+ *      -1 --> If it could not open the file or assign the memory space needed
+ *      -2 --> If the master password[] is not the correct one, if the checksum don't add up
  */
-int readUserInfo(char* path, Accounts* account, const char password[]);
+int readUserInfo(char* path, Accounts** account, const char password[]);
 
 /*
  * Argument:
  *      path*      --> Data path where the file is
  *      account[]  --> List of accounts (struct) that have all the variables that an account needs
- *      password[] --> Array of characters that form the password
+ *      password[] --> Array of characters that form the password to cipher the data
  *
  * Function:
- *
+ *      Will write in the file that the *path points to the information in account[] once it have
+ *      been ciphered with the password[].
+ *      The file will follow this structure:
+ *      numAccounts (Exm: 3)
+ *      NºChar username0   NºChar password0   username0   password0   checksum0
+ *      NºChar username1   NºChar password1   username1   password1   checksum1
+ *      NºChar username2   NºChar password2   username2   password2   checksum2
  * Return:
- *      Nothing is a void. (But arrayChar goes through reference and "stores" the ciphered text)
+ *       0 --> If everything went as it should
+ *      -1 --> If the file could not be opened
  */
 int writeUserInfo(char* path, Accounts account[], const char password[], int numAccounts);
 
