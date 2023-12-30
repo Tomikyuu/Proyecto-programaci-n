@@ -254,7 +254,7 @@ int main() {
 
     //strlen(user) - 4 is used to not print the ".txt" at the end of the name
     printf("\nWelcome ");
-    for(int i =0; i < strlen(user) - 4; i++)
+    for(int i = 0; i < strlen(user) - 4; i++)
     {
         printf("%c", user[i]);
     }
