@@ -50,7 +50,7 @@ int readUserInfo(char* path, Accounts** account, const char password[]) {
     }
 
     // Read number of accounts and store it in numAccounts
-    fscanf(fp, "%d", &numAccounts);
+    fread(&numAccounts, sizeof(char), 1, fp);
 
     // Assign Memory Space to the Struct so that it can store all the accounts
     createUserInfo(numAccounts, account, 0);
@@ -58,10 +58,12 @@ int readUserInfo(char* path, Accounts** account, const char password[]) {
     // For loop that goes through all the accounts of the user
     for (int i = 0; i < numAccounts; i++) {
         // Store the data of the file (N� of characters in the password and username) in the variables of the struct
-        // Store n� of characters in the username in .userNamelenght
-        fscanf(fp, "%d", &(*account)[i].userNamelenght);
+        fread(&(*account)[i].userNamelenght, sizeof(int), 1, fp);
+        fread(&(*account)[i].passwordlenght, sizeof(int), 1, fp);
+        // Store nº of characters in the username in .userNamelenght
+        //fscanf(fp, "%d", &(*account)[i].userNamelenght);
         // Store n� of characters in the password in .passwordlenght
-        fscanf(fp, "%d", &(*account)[i].passwordlenght);
+        //fscanf(fp, "%d", &(*account)[i].passwordlenght);
 
         // Assign Memory Space to the Pointers of the username
         (*account)[i].userName = malloc((*account)[i].userNamelenght + 1);
@@ -79,12 +81,19 @@ int readUserInfo(char* path, Accounts** account, const char password[]) {
         }
 
         // Store the information (username, password and checksum) in the variables of the struct
+        fread((*account)[i].userName, sizeof(char), (*account)[i].userNamelenght, fp);
+        fread((*account)[i].password, sizeof(char), (*account)[i].passwordlenght, fp);
+        fread(&(*account)[i].checksum, sizeof(int), 1, fp);
         // Store username in .userName
-        fscanf(fp, "%s", (*account)[i].userName);
+        //fscanf(fp, "%s", (*account)[i].userName);
         // Store password in .password
-        fscanf(fp, "%s", (*account)[i].password);
+        //fscanf(fp, "%s", (*account)[i].password);
         // Store checksum in .checksum
-        fscanf(fp, "%d", &(*account)[i].checksum);
+        //fscanf(fp, "%d", &(*account)[i].checksum);
+
+        // Null-terminate the strings
+        (*account)[i].userName[(*account)[i].userNamelenght] = '\0';
+        (*account)[i].password[(*account)[i].passwordlenght] = '\0';
 
         // Decipher username and password (XOR Cipher) with the master password (password[])
         // Decipher username and store it in .userName
@@ -110,6 +119,7 @@ int readUserInfo(char* path, Accounts** account, const char password[]) {
                 // Free the memory of the password
                 free((*account)[i].password);
             }
+            free(*account);
             // Return -2
             return -2;
         }
@@ -141,31 +151,31 @@ int writeUserInfo(char* path, Accounts account[], const char password[], const i
         return -1;
     }
 
-    // Write in the file the n� of accounts (n� of structs) the user has created
-    fprintf(fp, "%d\n", numAccounts);
+    // Write in the file the num of accounts (num of structs) the user has created
+    //fprintf(fp, "%d\n", numAccounts);
+    fwrite(&numAccounts, sizeof(int), 1, fp);
 
     // Write in the file the rest of the information.
     // Information:
-    // N� characters username | N� characters password | username (ciphered) | password (ciphered) | checksum
+    // N characters username | N characters password | username (ciphered) | password (ciphered) | checksum
     // For loop that goes through all the accounts (structs) of the user
     for (int i = 0; i < numAccounts; i++) {
-        // Prints in file the n� character in the username
-        fprintf(fp, "%d ", account[i].userNamelenght);
-        fflush(stdin);
-        // Prints in file the n� character in the password
-        fprintf(fp, "%d ", account[i].passwordlenght);
-        fflush(stdin);
+        // Prints in file the num of character in the username
+        // fprintf(fp, "%d ", account[i].userNamelenght);
+        fwrite(&account[i].userNamelenght, sizeof(int), 1, fp);
+        // Prints in file the num of character in the password
+        // fprintf(fp, "%d ", account[i].passwordlenght);
+        fwrite(&account[i].passwordlenght, sizeof(int), 1, fp);
         // Prints in file the ciphered username
-        fprintf(fp, "%s ", account[i].userName);
-        //fwrite(account[i].userName, sizeof(char), account[i].userNamelenght, fp);
-        fflush(stdin);
+        //fprintf(fp, "%s ", account[i].userName);
+        fwrite(account[i].userName, sizeof(char), account[i].userNamelenght, fp);
         // Prints in file the ciphered password
-        fprintf(fp, "%s ", account[i].password);
-        //fwrite(account[i].password, sizeof(char), account[i].passwordlenght, fp);
-        fflush(stdin);
+        //fprintf(fp, "%s ", account[i].password);
+        fwrite(account[i].password, sizeof(char), account[i].passwordlenght, fp);
         // Prints in file the checksum
         fprintf(fp, "%d\n", account[i].checksum);
-        fflush(stdin);
+        fwrite(&account[i].checksum, sizeof(int), 1, fp);
+
     }
 
     // Close file
