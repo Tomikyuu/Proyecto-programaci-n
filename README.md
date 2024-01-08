@@ -23,7 +23,7 @@ Para que no hubiese problemas decidimos trabajar en el proyecto siguiendo el hor
 
 **Trabajo Realizado en Conjunto:** fileManager.c / userInfoManager.c 
 
-**Tómas/Fernando:** main.c y Memoria Técnica
+**Tomás/Fernando:** main.c y Memoria Técnica
 
 **Juan:** Interfaz Gráfica (Incluida la parte de GTK en la Memoria Técnica)
 
