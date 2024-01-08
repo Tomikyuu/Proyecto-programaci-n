@@ -10,7 +10,7 @@
 
 #include "userInfoManager.h"
 
-#define SIZE 20
+#define SIZE 100
 
 Account* createUserInfo(int numAccounts) {
 
@@ -110,16 +110,6 @@ void deleteUser(Account** user, const int index, int* numAccounts) {
     for (int i = index; i < *numAccounts ; i++) {
         // Move Account One Less Position
         (*user)[i] = (*user)[i+1];
-    }
-
-    // Resize the Memory Space Assigned to the Accounts of the user
-    *user = realloc(*user, *numAccounts * sizeof(Account));
-    // Check if the allocation was successful
-    if (*user == NULL) {
-        // Inform of an ERROR
-        fprintf(stderr, "Error: Memory ReAssignment of the Accounts Failed (Delete Account Function)");
-        // Terminate Abruptly the Program (We found exit(EXIT_FAILURE) through the Internet)
-        exit(EXIT_FAILURE);
     }
 }
 

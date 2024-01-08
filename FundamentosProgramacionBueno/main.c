@@ -17,15 +17,18 @@
 #include "fileManager.h"
 #include "userInfoManager.h"
 
+// Define Modes
 #define SEE_ACCOUNTS 1
 #define ADD_ACCOUNT 2
 #define DELETE_ACCOUNT 3
 #define SAVE_AND_EXIT 4
 
-#define SIZE 50
-#define SIZE_PATH 70
+// Define Sizes
+#define SIZE 100
+#define SIZE_PATH 150
 #define SIZE_FORMAT 5
 
+// Define ASCII Symbols
 #define NUMBER_BARS 50
 #define DOUBLE_BARS 186
 #define BARS_INTERFACE 205
@@ -209,24 +212,19 @@ int fileExists(char* filePath, const char* masterUsername) {
     // Variable to Store the Name of the File (Username) and Initialize it to 0 (NULL)
     // Note: We do it to not lose the Username
     char fileName[SIZE];
-
     // Copy the masterUsername on to fileName
     strcpy(fileName, masterUsername);
-
     // Format of the File
     char fileFormat[SIZE_FORMAT] = ".txt";
-
     // Piece Together the Data Path of the File.
     // File = Username + Format
     strcat(fileName, fileFormat);
     // Data Path = Path + File
     strcat(filePath, fileName);
-
     // Pointer that Points to Files
     FILE * fp;
     // Open Binary File
     fp = fopen(filePath, "rb");
-
     // Check if the File Exist
     // If it Does Not Exist
     if (fp == NULL) {
@@ -488,7 +486,7 @@ int main() {
                     // Delete the Account
                     deleteUser(&user, indexAccount(numAccounts), &numAccounts);
                     // Inform the User
-                    printf("\nThe New Accounts Has Been Deleted Successfully\n");
+                    printf("\nThe Account Has Been Deleted Successfully\n");
                 }
                 // If there Aren't Inform the User
                 else {

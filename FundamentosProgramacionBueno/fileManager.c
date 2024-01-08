@@ -73,9 +73,9 @@ Account* readUserInfo(const char filePath[], const char key[], int* numAccounts)
     Account* user = createUserInfo(*numAccounts);
 
     // Store the Checksum Calculated from the Password and Username
-    int checksumNew;
+    long int checksumNew;
     // Store the Checksum Written on the File
-    int checksumFile = 0;
+    long int checksumFile = 0;
 
     // Read the Information on the File and Store it on the Account (Array of structs)
     // (For Loop that Repeats as many times as Accounts are)
@@ -132,7 +132,7 @@ Account* readUserInfo(const char filePath[], const char key[], int* numAccounts)
             // Close File
             fclose(fp);
             // Free Memory Allocated
-            freeAllUserInfo(user, *numAccounts);
+            freeAllUserInfo(user, i + 1);
             // Inform of the Issue
             printf("Wrong Password\n");
             // Return NULL
@@ -159,13 +159,20 @@ int writeUserInfo(char* filePath, Account* user, const char key[], const int num
     }
 
     // Variable to store the Checksum of the Username and Password of each Account
-    int checksum;
+    long int checksum;
 
     // Write on the File the Number of Accounts
     fwrite(&numAccounts, sizeof(int), 1, fp);
 
-    // If numAccounts == 0 we don't write anymore
-    if (numAccounts != 0) {
+    // If numAccounts == 0 we don't write anymore and delete the file
+    if (numAccounts == 0) {
+        // Close File
+        fclose(fp);
+        // Remove File
+        remove(filePath);
+    }
+    // If not then we write the information of the accounts on the file
+    else {
         // Write the Information of All the Accounts (For Loop that Repeats as many times as Accounts are)
         for (int i = 0; i < numAccounts; i++) {
             // Write the Number of Characters on the username on the File
@@ -191,9 +198,9 @@ int writeUserInfo(char* filePath, Account* user, const char key[], const int num
             // Write on the File the Checksum
             fwrite(&checksum, sizeof(int), 1, fp);
         }
+        // Close File
+        fclose(fp);
     }
-    // Close File
-    fclose(fp);
     // Return 0 if Everything went Alright
     return 0;
 }
