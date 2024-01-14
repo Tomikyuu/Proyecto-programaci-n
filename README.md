@@ -16,6 +16,7 @@ En este repositorio de GitHub podrán encontrar de forma totalmente gratuita el 
 **ARCHIVO EJECUTABLE: FundamentosProgramacionBueno.exe:** Archivo Ejecutable del Gestor de Cuentas con la Interfaz Gráfica. Utilizar en caso de que no se pueda compilar el código en **Proyecto GTK**.
 
 **CARPETA Extra:**
+
     1) **Carpeta FundamentosProgramacionBueno:** Código base del Gestor de Cuentas tal y como se define en el PDF del Proyecto. Es decir, sin ningun tipo de modificación extra para conseguir una mayor puntuación.
     2) **Vídeo:** Video mostrando y describiendo los resultados del programa.
     
