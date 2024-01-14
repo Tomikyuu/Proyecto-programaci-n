@@ -1,0 +1,3 @@
+C:/Users/juana/OneDrive/Escritorio/ProyectoGTK/FundamentosProgramacionBueno/cmake-build-debug/CMakeFiles/FundamentosProgramacionBueno.dir
+C:/Users/juana/OneDrive/Escritorio/ProyectoGTK/FundamentosProgramacionBueno/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/juana/OneDrive/Escritorio/ProyectoGTK/FundamentosProgramacionBueno/cmake-build-debug/CMakeFiles/rebuild_cache.dir
