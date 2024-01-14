@@ -17,6 +17,10 @@ En este repositorio de GitHub podrán encontrar de forma totalmente gratuita el 
 
 **ARCHIVO EJECUTABLE:** Archivo Ejecutable del Gestor de Cuentas con la Interfaz Gráfica. Utilizar en caso de que no se pueda compilar el código en **Carpeta GTK**.
 
+En el interior del propio Código, podemos encontrar implementadas varias funciones que fueron usadas para realizar la práctica de manera más ordenada y mantener el código más limpio y legible.
+**Funciones:**
+
+
 Cuando comenzamos a hablar por primera vez sobre el proyecto, decidimos que unicamente trabajaríamos en el cuando todos los integrantes del equipo estuviesen juntos. De esta modo, todos los miembros conseguirían la misma nota al haber participado de manera equitativa. Sin embargo, también llegamos a la conclusión que si alguno de los miembros del equipo decidia "abandonar" a sus compañeros este sería exiliado del proyecto y por tanto, perdería la posiblidad de formar parte del proyecto.
 
 Para que no hubiese problemas decidimos trabajar en el proyecto siguiendo el horario de la universidad, es decir, de 9:00 a 14:00, una parada para comer y continuar de 17:00 a 20:00. Horario que cumplimos desde el 28 de Diciembre hasta el 30 de Diciembre y continuamos desde el 2 de Enero hasta el 5 de Enero. Por tanto, podemos decir con total seguridad que los miembros del equipo invirtieron 56 horas en total. A continuación mostraremos el reparto de tareas:
