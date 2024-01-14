@@ -18,6 +18,7 @@ En este repositorio de GitHub podrán encontrar de forma totalmente gratuita el 
 **ARCHIVO EJECUTABLE:** Archivo Ejecutable del Gestor de Cuentas con la Interfaz Gráfica. Utilizar en caso de que no se pueda compilar el código en **Carpeta GTK**.
 
 En el interior del propio Código, podemos encontrar implementadas varias funciones que fueron usadas para realizar la práctica de manera más ordenada y mantener el código más limpio y legible.
+
 *Funciones:
 
 **int calculateChecksum:** Argument:
