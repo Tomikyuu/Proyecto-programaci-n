@@ -160,6 +160,8 @@ Obviamente estas funciones han sido distribuidas por distintos archivos .c y.h, 
 
 **userInfoManager.h:** Objective: definir la cabezera de las funciones de userInfoManager.c
 
+**main.c:** Objective: ejecutar y mostrar el programa al usuario.
+
 
 Cuando comenzamos a hablar por primera vez sobre el proyecto, decidimos que unicamente trabajaríamos en el cuando todos los integrantes del equipo estuviesen juntos. De esta modo, todos los miembros conseguirían la misma nota al haber participado de manera equitativa. Sin embargo, también llegamos a la conclusión que si alguno de los miembros del equipo decidia "abandonar" a sus compañeros este sería exiliado del proyecto y por tanto, perdería la posiblidad de formar parte del proyecto.
 
