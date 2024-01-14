@@ -149,6 +149,18 @@ En el interior del propio Código, podemos encontrar implementadas varias funcio
               Return:
                     0 --> acaba el programa
 
+Obviamente estas funciones han sido distribuidas por distintos archivos .c y.h, estos son tales ficheros:
+
+**fileManager.c:** Objective: librería que organiza la creación, escritura and lectura de ficheros.
+
+**userInfoManager.c:** Objective: libreria que maneja la memoria dinámica que necesitan las estructuras de datos que han
+                                de ser definidos y almacenados en los structs.
+
+**fileManager.h:** Objective: definir la cabezera de las funciones de fileManager.c
+
+**userInfoManager.h:** Objective: definir la cabezera de las funciones de userInfoManager.c
+
+
 Cuando comenzamos a hablar por primera vez sobre el proyecto, decidimos que unicamente trabajaríamos en el cuando todos los integrantes del equipo estuviesen juntos. De esta modo, todos los miembros conseguirían la misma nota al haber participado de manera equitativa. Sin embargo, también llegamos a la conclusión que si alguno de los miembros del equipo decidia "abandonar" a sus compañeros este sería exiliado del proyecto y por tanto, perdería la posiblidad de formar parte del proyecto.
 
 Para que no hubiese problemas decidimos trabajar en el proyecto siguiendo el horario de la universidad, es decir, de 9:00 a 14:00, una parada para comer y continuar de 17:00 a 20:00. Horario que cumplimos desde el 28 de Diciembre hasta el 30 de Diciembre y continuamos desde el 2 de Enero hasta el 5 de Enero. Por tanto, podemos decir con total seguridad que los miembros del equipo invirtieron 56 horas en total. A continuación mostraremos el reparto de tareas:
