@@ -24,7 +24,11 @@ En este repositorio de GitHub podrán encontrar de forma totalmente gratuita el 
     
 En el interior del propio Código, podemos encontrar implementadas varias funciones que fueron usadas para realizar la práctica de manera más ordenada y mantener el código más limpio y legible.
 
-*Funciones:
+**Funciones:**
+
+**fileManager.h:** Objective: definir la cabezera de las funciones de fileManager.c
+
+**fileManager.c:** Objective: librería que organiza la creación, escritura and lectura de ficheros.
 
 **int calculateChecksum:** 
 
@@ -92,6 +96,11 @@ En el interior del propio Código, podemos encontrar implementadas varias funcio
                         Return:
                               0 --> todo ha ido bien
                              -1 --> el fichero no pudo abrirse
+
+ 
+ **userInfoManager.h:** Objective: definir la cabezera de las funciones de userInfoManager.c
+ 
+ **userInfoManager.c:** Objective: libreria que maneja la memoria dinámica que necesitan las estructuras de datos que han de ser definidos y almacenados en los structs.
  
  **Account* createUserInfo:** 
  
@@ -154,19 +163,9 @@ En el interior del propio Código, podemos encontrar implementadas varias funcio
               Return:
                     0 --> acaba el programa
 
-Obviamente estas funciones han sido distribuidas por distintos archivos .c y.h, estos son tales ficheros:
 
-**fileManager.c:** Objective: librería que organiza la creación, escritura and lectura de ficheros.
-
-**userInfoManager.c:** Objective: libreria que maneja la memoria dinámica que necesitan las estructuras de datos que han
-                                de ser definidos y almacenados en los structs.
-
-**fileManager.h:** Objective: definir la cabezera de las funciones de fileManager.c
-
-**userInfoManager.h:** Objective: definir la cabezera de las funciones de userInfoManager.c
 
 **main.c:** Objective: ejecutar y mostrar el programa al usuario.
-
 
 Cuando comenzamos a hablar por primera vez sobre el proyecto, decidimos que unicamente trabajaríamos en el cuando todos los integrantes del equipo estuviesen juntos. De esta modo, todos los miembros conseguirían la misma nota al haber participado de manera equitativa. Sin embargo, también llegamos a la conclusión que si alguno de los miembros del equipo decidia "abandonar" a sus compañeros este sería exiliado del proyecto y por tanto, perdería la posiblidad de formar parte del proyecto.
 
