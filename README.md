@@ -11,12 +11,14 @@ En este repositorio de GitHub podrán encontrar de forma totalmente gratuita el 
 
 **Memoria Técnica:** Documento PDF donde se describe el comportamiento del programa junto a las decisiones de implementación. Recomendamos encarecidamente que lea primero la memoria técnica antes de ejecutar el Código Base para conseguir un mayor entendimiento del gestor de cuentas.
 
-**Carpeta FundamentosProgramaciónBueno:** Código base del Gestor de Cuentas tal y como se define en el PDF del Proyecto. Es decir, sin ningun tipo de modificación extra para conseguir una mayor puntuación.
-
 **Carpeta GTK:** El Código del Gestor de Cuentas + Interfaz Gráfica (GTK)
 
-**ARCHIVO EJECUTABLE:** Archivo Ejecutable del Gestor de Cuentas con la Interfaz Gráfica. Utilizar en caso de que no se pueda compilar el código en **Carpeta GTK**.
+**ARCHIVO EJECUTABLE: FundamentosProgramacionBueno.exe:** Archivo Ejecutable del Gestor de Cuentas con la Interfaz Gráfica. Utilizar en caso de que no se pueda compilar el código en **Proyecto GTK**.
 
+**CARPETA :**
+    1) **Carpeta FundamentosProgramacionBueno:** Código base del Gestor de Cuentas tal y como se define en el PDF del Proyecto. Es decir, sin ningun tipo de modificación extra para conseguir una mayor puntuación.
+    2) Vídeo
+    
 En el interior del propio Código, podemos encontrar implementadas varias funciones que fueron usadas para realizar la práctica de manera más ordenada y mantener el código más limpio y legible.
 
 *Funciones:
