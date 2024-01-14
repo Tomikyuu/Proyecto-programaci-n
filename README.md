@@ -21,7 +21,9 @@ En el interior del propio Código, podemos encontrar implementadas varias funcio
 
 *Funciones:
 
-**int calculateChecksum:** Argument:
+**int calculateChecksum:** 
+
+                          Argument:
                                int numChar      --> Number of characters of arrayChar[]
                                char arrayChar[] --> Array of character (We will be calculating its checksum)
                           
@@ -31,7 +33,9 @@ En el interior del propio Código, podemos encontrar implementadas varias funcio
                           Return:
                                checksum --> Returns the checksum that correspond to the arrayChar[]
 
- **void cipherXOR:** Argument:
+ **void cipherXOR:** 
+                     
+                     Argument:
                          int numChar      --> nº of characters arrayData has
                          char arrayData[] --> Array of character that we will be ciphering or deciphering
                          char password[]  --> Key to cipher and decipher arrayData[]
@@ -43,7 +47,9 @@ En el interior del propio Código, podemos encontrar implementadas varias funcio
                     Return:
                          Nothing is a void. (But arrayChar goes through reference and "stores" the ciphered text)
 
-**Account* readUserInfo:** Argument:
+**Account* readUserInfo:** 
+  
+                          Argument:
                                char filePath*   --> Data path where the file is
                                int numAccounts  --> Number of Accounts the User Has
                                char key[]       --> Array of characters that form the password to decipher the data
@@ -61,7 +67,9 @@ En el interior del propio Código, podemos encontrar implementadas varias funcio
                           Return:
                               Account* user --> An Array of Structures that Have all the Information of the Accounts on the File
 
-**int writeUserInfo:**  Argument:
+**int writeUserInfo:**  
+
+                        Argument:
                              char* path       --> Data path of the file
                              Account* user    --> List of accounts (struct) that have all the variables that an account needs
                              char key[]       --> Array of characters that form the password to cipher the data
@@ -80,7 +88,9 @@ En el interior del propio Código, podemos encontrar implementadas varias funcio
                               0 --> If everything went as it should
                              -1 --> If the file could not be opened
  
- **Account* createUserInfo:** Argument:
+ **Account* createUserInfo:** 
+ 
+                             Argument:
                                    int numAccounts --> Number of Accounts of the User.
                               
                               Function:
@@ -91,7 +101,9 @@ En el interior del propio Código, podemos encontrar implementadas varias funcio
                               Return:
                                    userAccountArray --> Address where the dynamic memory was reserved.
 
-**void fillUserInfo:** Argument:
+**void fillUserInfo:** 
+
+                      Argument:
                            Account* user --> Address reserved for the data of the new account
                       
                       Function:
@@ -101,7 +113,9 @@ En el interior del propio Código, podemos encontrar implementadas varias funcio
                       Return:
                           It is a void, so it doesn't return anything (user goes through reference)
 
-**void deleteUser:** Argument:
+**void deleteUser:** 
+
+                    Argument:
                            int index        --> Number of the account that we need to delete
                            Account** user   --> Address of the Pointer that has the Address of the Accounts (Pointer to Pointer)
                            int* numAccounts --> Number of Accounts of the user
@@ -112,7 +126,9 @@ En el interior del propio Código, podemos encontrar implementadas varias funcio
                      Return:
                           Nothing is a void. (But *user and *numAccounts goes through reference)
 
-**void freeAllUserInfo:** Argument:
+**void freeAllUserInfo:** 
+
+                          Argument:
                                Account* user    --> List of all the accounts the user has
                                int* numAccounts --> Number of Accounts of the user
                           Function:
@@ -120,7 +136,9 @@ En el interior del propio Código, podemos encontrar implementadas varias funcio
                           Return:
                                It is a void, so it doesn't return anything (*user goes through reference)
 
-**int main:** Argument:
+**int main:** 
+
+              Argument:
                     Sin argumentos, 
               
               Function:
