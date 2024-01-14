@@ -24,117 +24,117 @@ En el interior del propio Código, podemos encontrar implementadas varias funcio
 **int calculateChecksum:** 
 
                           Argument:
-                               int numChar      --> Number of characters of arrayChar[]
-                               char arrayChar[] --> Array of character (We will be calculating its checksum)
+                               int numChar      --> Nº de caracteres de arrayChar[]
+                               char arrayChar[] --> el array (calcularemos su checksum)
                           
                           Function:
-                               calculateChecksum() calculates the checksum of an array of characters (arrayChar) through an algorithm.
+                               calculateChecksum() calcula el checksum del array (arrayChar) por medio de un algoritmo.
                           
                           Return:
-                               checksum --> Returns the checksum that correspond to the arrayChar[]
+                               checksum --> devuelve el checksum del correspondiente arrayChar[]
 
  **void cipherXOR:** 
                      
                      Argument:
-                         int numChar      --> nº of characters arrayData has
-                         char arrayData[] --> Array of character that we will be ciphering or deciphering
-                         char password[]  --> Key to cipher and decipher arrayData[]
+                         int numChar      --> nº de caracteres que tiene arrayData
+                         char arrayData[] --> array que vamos a cifrar o descifrar
+                         char password[]  --> clave para cifrar y descifrar arrayData[]
                     
                     Function:
-                         xorCipher(), ciphers or deciphers with an XOR bit to bit cipher the array of characters
-                                      in arrayData[] with the key password. And stores the result in arrayData[]
+                         xorCipher(), cifrado o descifrado XOR bit a bit cifra el array de caracteres
+                                      en arrayData[] con la contraseña. almacena el resultado en arrayData[]
                     
                     Return:
-                         Nothing is a void. (But arrayChar goes through reference and "stores" the ciphered text)
+                         Nada, es void. (pero arrayChar pasa por referencia y "almacena" el texto cifrado)
 
 **Account* readUserInfo:** 
   
                           Argument:
-                               char filePath*   --> Data path where the file is
-                               int numAccounts  --> Number of Accounts the User Has
-                               char key[]       --> Array of characters that form the password to decipher the data
+                               char filePath*   --> ruta de datos
+                               int numAccounts  --> numero de cuentas que tiene el usuario almacenadas
+                               char key[]       --> array de caracteres que forman la contraseña
                           
                           Function:
-                               The function reads the information of the file and decipher it's with the password[].
-                               Then, it will store the information in the structs and compare the checksums to
-                               check if the password is the correct one.
-                               The file will follow this structure:
+                               la funcion lee la informacion del fichero y la descifra con la password[].
+                               Luego, almacena la info en los structs y compara los checksums para
+                               comprobar que la contraseña es correcta.
+                               sigue esta estructura:
                                numAccounts (Exm: 3)
                                NºChar username0   NºChar password0   username0   password0   checksum0
                                NºChar username1   NºChar password1   username1   password1   checksum1
                                NºChar username2   NºChar password2   username2   password2   checksum2
                           
                           Return:
-                              Account* user --> An Array of Structures that Have all the Information of the Accounts on the File
+                              Account* user --> un Array de Structures que tienen toda la informacion de las cuentas del fichero
 
 **int writeUserInfo:**  
 
                         Argument:
-                             char* path       --> Data path of the file
-                             Account* user    --> List of accounts (struct) that have all the variables that an account needs
-                             char key[]       --> Array of characters that form the password to cipher the data
-                             int numAccounts  --> Number of Accounts the User Has
+                             char* path       --> rucha del fichero
+                             Account* user    --> lista de cuentas (struct) que tienen las variables que las cuentas necesitan
+                             char key[]       --> Array de caracteres que forman la contraseña para descifrar los datos
+                             int numAccounts  --> número de cuentas
                         
                         Function:
-                             Will write in the file that the *path points to the information in account[] once it have
-                             been ciphered with the password[].
-                             The file will follow this structure:
+                             escribirá en el fichero al que *path apunte la información de account[] una vez sea
+                             cifrado con la password[].
+                             sigue esta estructura:
                              numAccounts (Exm: 3)
                              NºChar username0   NºChar password0   username0   password0   checksum0
                              NºChar username1   NºChar password1   username1   password1   checksum1
                              NºChar username2   NºChar password2   username2   password2   checksum2
                         
                         Return:
-                              0 --> If everything went as it should
-                             -1 --> If the file could not be opened
+                              0 --> todo ha ido bien
+                             -1 --> el fichero no pudo abrirse
  
  **Account* createUserInfo:** 
  
                              Argument:
-                                   int numAccounts --> Number of Accounts of the User.
+                                   int numAccounts --> numero de cuentas.
                               
                               Function:
-                                   Reserve enough dynamic memory to hold as many account structs as deemed necessary
-                                   according to the numAccounts parameter.
-                                   (It also initialises the values of the structures for better understanding while debugging)
+                                   reserva tabta memoria como los structs necesiten, no menos,
+                                   dependiendo del numAccounts.
+                                   (tambien inicializa el valor de los structures para mayor claridad en el debbugging)
                               
                               Return:
-                                   userAccountArray --> Address where the dynamic memory was reserved.
+                                   userAccountArray --> direccion donde se reserva la memoria.
 
 **void fillUserInfo:** 
 
                       Argument:
-                           Account* user --> Address reserved for the data of the new account
+                           Account* user --> direccion reservada para las nuevas cuentas
                       
                       Function:
-                           fillUserInfo() will store the struct account with the username, the password, the length in characters
-                           of the username, the length in characters of the password and the checksum of the account.
+                           fillUserInfo() almacenará las cuentas struct con su usuario, contraseña, tamaño de caracteres
+                           del usuario y contraseña, y el checksum de la cuenta.
                       
                       Return:
-                          It is a void, so it doesn't return anything (user goes through reference)
+                          es un void, asi que no devuelve nada (usuario pasa por referencia)
 
 **void deleteUser:** 
 
                     Argument:
-                           int index        --> Number of the account that we need to delete
-                           Account** user   --> Address of the Pointer that has the Address of the Accounts (Pointer to Pointer)
-                           int* numAccounts --> Number of Accounts of the user
+                           int index        --> numero de la cuenta que se quiere eliminar
+                           Account** user   --> direccion del puntero que tiene la direccion de las cuentas (puntero a puntero)
+                           int* numAccounts --> numero de cuentas
                      
                      Function:
-                          Erases the account in the position index
+                          vorra la cuenta indicada por el usuario
                      
                      Return:
-                          Nothing is a void. (But *user and *numAccounts goes through reference)
+                          nada, es void. (pero *user y *numAccounts pasan por referencia)
 
 **void freeAllUserInfo:** 
 
                           Argument:
-                               Account* user    --> List of all the accounts the user has
-                               int* numAccounts --> Number of Accounts of the user
+                               Account* user    --> lista de todas las cuentas
+                               int* numAccounts --> numero de cuentas
                           Function:
-                               Free the dynamic memory that was reserved at createUserInfo.
+                               libera la memoria dinamica reservada en createUserInfo.
                           Return:
-                               It is a void, so it doesn't return anything (*user goes through reference)
+                               es un void, no devuelve nada (*user pasa por referencia)
 
 **int main:** 
 
@@ -142,7 +142,9 @@ En el interior del propio Código, podemos encontrar implementadas varias funcio
                     Sin argumentos, 
               
               Function:
-                    Poner en funcionamiento todas las funciones, pues es la función en la que se ejecuta el programa que se muestra al usuario. Muestra el inicio de sesión y los modos disponibles para el usuario
+                    Poner en funcionamiento todas las funciones, pues es la función en la que se 
+                    ejecuta el programa que se muestra al usuario. Muestra el inicio de sesión y 
+                    los modos disponibles para el usuario
               
               Return:
                     0 --> acaba el programa
