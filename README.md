@@ -5,7 +5,7 @@ Juan Alfonso_ID: 161014
 Fernando Azlor_ID: 166054 
 Tomás Juan_ID: 156527
 
-Bienvenidos a **NOMBRE DEL PROGRAMA**, **NOMBREDELPROG** es un gestor de cuentas desarrollado en C que utiliza el clásico cifrado XOR bit a bit para encriptar la información de sus cuentas. Creamos el gestor de cuentas como proyecto para la asignatura de Fundametos de Programción para la Universidad de San Jorge. A continuación, comenzaremos a describir la estructura del repositorio y sus componentes. Después podrá encontrar el tiempo invertido en el proyecto por cada uno de los miembros del equipo.
+Bienvenidos a nuestra lista de Schneider, esta lista de Schneider es un gestor de cuentas desarrollado en C que utiliza el clásico cifrado XOR bit a bit para encriptar la información de sus cuentas. Creamos el gestor de cuentas como proyecto para la asignatura de Fundametos de Programción para la Universidad de San Jorge. A continuación, comenzaremos a describir la estructura del repositorio y sus componentes. Después podrá encontrar el tiempo invertido en el proyecto por cada uno de los miembros del equipo.
 
 En este repositorio de GitHub podrán encontrar de forma totalmente gratuita el código base de nuestro gestor de cuentas para que puedan utilizar sus servicios sin ningun tipo de problema. Como podrán observar, el repositorio esta formado por varias carpetas, cada una de ellas con un código distinto:
 
