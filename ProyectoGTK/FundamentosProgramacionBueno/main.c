@@ -4,7 +4,15 @@
  *  Name Student 3: Tomas Juan Uson
  *  Project: Programming Project
  *  Date of Creation: 27 / 12 / 2023
- *  Objective: Main function that does the following:
+ *  Objective: Create an Account Manager that first ask the user for the username and password of the
+ *             master account. Afterward, creates the text file where the information will be stored
+ *             and gives the user the chance to pick between the 4 operations:
+ *             1) See Accounts
+ *             2) Add Accounts
+ *             3) Delete Accounts
+ *             4) Exit
+ *             The operation do as the names suggest. Once the user picks 4 the program will end, until
+ *             it will continue in a loop.
  *
  */
 
