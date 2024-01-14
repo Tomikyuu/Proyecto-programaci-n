@@ -19,6 +19,7 @@ En este repositorio de GitHub podrán encontrar de forma totalmente gratuita el 
 
 En el interior del propio Código, podemos encontrar implementadas varias funciones que fueron usadas para realizar la práctica de manera más ordenada y mantener el código más limpio y legible.
 *Funciones:
+
 **int calculateChecksum:** Argument:
                                int numChar      --> Number of characters of arrayChar[]
                                char arrayChar[] --> Array of character (We will be calculating its checksum)
