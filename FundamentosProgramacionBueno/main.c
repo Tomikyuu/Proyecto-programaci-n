@@ -379,7 +379,18 @@ int indexAccount(const int numAccounts) {
 }
 
 /// MAIN
-
+/*
+ *  Argument:
+ *              No arguments, 
+ *        
+ *        Function:
+ *              put to work together all the functions, because this is the function that 
+ *              executes the program and shows it to the user. It shows the log in and 
+ *              the actions available for the user.
+ *        
+ *        Return:
+ *              0 --> end of program
+ */
 int main() {
 
     /// INTERFACE AND ASK FOR THE FIRST VALUES (USERNAME AND PASSWORD)
