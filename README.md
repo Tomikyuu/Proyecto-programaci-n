@@ -18,6 +18,7 @@ En este repositorio de GitHub podrán encontrar de forma totalmente gratuita el 
 **CARPETA Extra:**
 
 **1) Carpeta FundamentosProgramacionBueno:** Código base del Gestor de Cuentas tal y como se define en el PDF del Proyecto. Es decir, sin ningun tipo de modificación extra para conseguir una mayor puntuación.
+
 **2) Vídeo:** Video mostrando y describiendo los resultados del programa.
     
 En el interior del propio Código, podemos encontrar implementadas varias funciones que fueron usadas para realizar la práctica de manera más ordenada y mantener el código más limpio y legible.
